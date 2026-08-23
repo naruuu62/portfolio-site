@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <main>
       <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
-        <button className="brand" onClick={() => goTo('home')} aria-label="Ke halaman awal"><span>AY.</span></button>
+        <button className="brand" onClick={() => goTo('home')} aria-label="Ke halaman awal"><span>SNA.</span></button>
         <nav className={menuOpen ? 'nav-links nav-links--open' : 'nav-links'} aria-label="Navigasi utama">
           {['about', 'skills', 'projects'].map((item) => <button key={item} onClick={() => goTo(item)}>{item}</button>)}
           <button className="nav-contact" onClick={() => goTo('contact')}>Let&apos;s talk <span>↗</span></button>
@@ -103,11 +103,11 @@ export default function Home() {
       </section>
 
       <section className="contact section" id="contact">
-        <div className="contact-intro"><div className="section-tag light">04 / KONTAK</div><h2>Punya ide?<br /><em>Mari kita<br />bicarakan.</em></h2><p>Saya selalu terbuka untuk project baru, kesempatan kolaborasi, atau sekadar bertukar cerita.</p><a href="mailto:halo@angilbert.dev">halo@angilbert.dev <span>↗</span></a></div>
+        <div className="contact-intro"><div className="section-tag light">04 / KONTAK</div><h2>Punya ide?<br /><em>Mari kita<br />bicarakan.</em></h2><p>Saya selalu terbuka untuk project baru, kesempatan kolaborasi, atau sekadar bertukar cerita.</p><a href="mailto:halo@angilbert.dev">halo@septian.dev <span>↗</span></a></div>
         <form onSubmit={submit}><label>Nama<input name="name" placeholder="Nama kamu" required /></label><label>Email<input name="email" type="email" placeholder="email@kamu.com" required /></label><label>Ceritakan idemu<textarea name="message" placeholder="Sedikit tentang project atau hal yang ingin kamu obrolkan..." required /></label><button className="btn btn-send" type="submit">Kirim pesan <span>↗</span></button><p className={`form-note ${sent ? 'visible' : ''}`} role="status">Pesan tersimpan—terima kasih! Saya akan segera menghubungi kamu.</p></form>
       </section>
 
-      <footer><button className="brand footer-brand" onClick={() => goTo('home')}>AY.</button><p>Dirancang & dibangun dengan niat baik.<br />© 2026 Angilbert.</p><div><a href="#">LinkedIn ↗</a><a href="#">GitHub ↗</a><a href="#">Instagram ↗</a></div></footer>
+      <footer><button className="brand footer-brand" onClick={() => goTo('home')}>SNA.</button><p>Dirancang & dibangun dengan niat baik.<br />© 2026 Septian Nuril A.</p><div><a href="#">LinkedIn ↗</a><a href="#">GitHub ↗</a><a href="#">Instagram ↗</a></div></footer>
     </main>
   );
 }
