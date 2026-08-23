@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <main>
       <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
-        <button className="brand" onClick={() => goTo('home')} aria-label="Ke halaman awal"><span>SNA.</span></button>
+        <button className="brand" onClick={() => goTo('home')} aria-label="Ke halaman awal"><span>AY.</span></button>
         <nav className={menuOpen ? 'nav-links nav-links--open' : 'nav-links'} aria-label="Navigasi utama">
           {['about', 'skills', 'projects'].map((item) => <button key={item} onClick={() => goTo(item)}>{item}</button>)}
           <button className="nav-contact" onClick={() => goTo('contact')}>Let&apos;s talk <span>↗</span></button>
@@ -55,7 +55,7 @@ export default function Home() {
         </div>
         <div className="portrait-wrap reveal delay">
           <div className="scribble">based in<br /><b>Malang, ID</b></div>
-          <div className="portrait" role="img" aria-label="Placeholder foto profil Septian">
+          <div className="portrait" role="img" aria-label="Placeholder foto profil Angilbert">
             <div className="portrait-bg" /><div className="portrait-head" /><div className="portrait-body" /><span>FOTO<br />KAMU</span>
           </div>
           <span className="sticker">OPEN TO<br /><b>WORK</b></span>
@@ -68,7 +68,7 @@ export default function Home() {
         <div className="about-grid">
           <h2>Saya percaya produk yang baik dimulai dari <em>rasa ingin tahu.</em></h2>
           <div className="about-copy">
-            <p>Saya seorang mahasiswa Informatika yang menikmati proses membangun produk dari nol—mulai dari memahami masalah, merancang alur, sampai menulis kode yang rapi.</p>
+            <p>Saya seorang mahasiswa Informatika yang menikmati proses membangun produk dari nol mulai dari memahami masalah, merancang alur, sampai menulis kode yang rapi.</p>
             <p>Di luar layar, saya suka mencari perspektif baru lewat musik, fotografi jalanan, dan obrolan panjang ditemani kopi.</p>
             <a href="#contact" onClick={(e) => { e.preventDefault(); goTo('contact'); }}>Lebih kenal dengan saya <span>→</span></a>
           </div>
@@ -80,7 +80,7 @@ export default function Home() {
 
       <section className="skills section" id="skills">
         <div className="section-tag light">02 / KEMAMPUAN</div>
-        <div className="skills-head"><h2>Yang bisa saya<br /><em>bawa ke meja.</em></h2><p>Saya menggabungkan logika teknis dan kepekaan visual untuk membuat produk yang bekerja dengan baik—dan terasa tepat.</p></div>
+        <div className="skills-head"><h2>Yang bisa saya<br /><em>bawa ke meja.</em></h2><p>Saya menggabungkan logika teknis dan kepekaan visual untuk membuat produk yang bekerja dengan baik dan terasa tepat.</p></div>
         <div className="skill-list">
           <article><span>01</span><h3>Frontend Development</h3><p>HTML, CSS, JavaScript, React, Next.js</p><i>↗</i></article>
           <article><span>02</span><h3>Backend Development</h3><p>PHP, Laravel, Node.js, MySQL, REST API</p><i>↗</i></article>
@@ -103,11 +103,11 @@ export default function Home() {
       </section>
 
       <section className="contact section" id="contact">
-        <div className="contact-intro"><div className="section-tag light">04 / KONTAK</div><h2>Punya ide?<br /><em>Mari kita<br />bicarakan.</em></h2><p>Saya selalu terbuka untuk project baru, kesempatan kolaborasi, atau sekadar bertukar cerita.</p><a href="mailto:halo@septian.dev">halo@septian.dev <span>↗</span></a></div>
+        <div className="contact-intro"><div className="section-tag light">04 / KONTAK</div><h2>Punya ide?<br /><em>Mari kita<br />bicarakan.</em></h2><p>Saya selalu terbuka untuk project baru, kesempatan kolaborasi, atau sekadar bertukar cerita.</p><a href="mailto:halo@angilbert.dev">halo@angilbert.dev <span>↗</span></a></div>
         <form onSubmit={submit}><label>Nama<input name="name" placeholder="Nama kamu" required /></label><label>Email<input name="email" type="email" placeholder="email@kamu.com" required /></label><label>Ceritakan idemu<textarea name="message" placeholder="Sedikit tentang project atau hal yang ingin kamu obrolkan..." required /></label><button className="btn btn-send" type="submit">Kirim pesan <span>↗</span></button><p className={`form-note ${sent ? 'visible' : ''}`} role="status">Pesan tersimpan—terima kasih! Saya akan segera menghubungi kamu.</p></form>
       </section>
 
-      <footer><button className="brand footer-brand" onClick={() => goTo('home')}>SNA.</button><p>Dirancang & dibangun dengan niat baik.<br />© 2026 Septian.</p><div><a href="#">LinkedIn ↗</a><a href="#">GitHub ↗</a><a href="#">Instagram ↗</a></div></footer>
+      <footer><button className="brand footer-brand" onClick={() => goTo('home')}>AY.</button><p>Dirancang & dibangun dengan niat baik.<br />© 2026 Angilbert.</p><div><a href="#">LinkedIn ↗</a><a href="#">GitHub ↗</a><a href="#">Instagram ↗</a></div></footer>
     </main>
   );
 }
