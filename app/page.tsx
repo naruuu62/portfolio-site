@@ -1,113 +1,30 @@
 'use client';
-
 import { FormEvent, useEffect, useState } from 'react';
 
 const projects = [
-  { no: '01', type: 'Web App', title: 'Ruang Temu', desc: 'Platform reservasi ruang kerja yang membuat proses mencari dan memesan tempat jadi lebih ringkas.', stack: ['Next.js', 'TypeScript', 'Supabase'], color: 'blue', mark: 'RT' },
-  { no: '02', type: 'Mobile', title: 'Saku Sehat', desc: 'Aplikasi pencatat kebiasaan harian dengan pengalaman sederhana, hangat, dan tidak menggurui.', stack: ['Flutter', 'Firebase', 'Figma'], color: 'orange', mark: 'SS' },
-  { no: '03', type: 'Website', title: 'Arunika Studio', desc: 'Website profil studio arsitektur yang mengutamakan karya, ritme visual, dan detail tipografi.', stack: ['React', 'CSS', 'Framer'], color: 'lime', mark: 'AS' },
+  { no:'01', type:'Laravel · REST API · MySQL', title:'TIS-UAP Marketplace', desc:'Backend marketplace dengan model, controller, routing, middleware, migration, seeder, dan relasi database one-to-one, one-to-many, serta many-to-many.', stack:['Laravel','PHP','MySQL','REST API'], color:'blue', mark:'API', href:'https://github.com/naruuu62/TIS-UAP', fit:'Paling relevan untuk posisi ini' },
+  { no:'02', type:'Laravel · Full-stack Web', title:'CyberGear IPSI', desc:'Aplikasi web Laravel yang mengimplementasikan autentikasi, keranjang belanja, dan alur checkout.', stack:['Laravel','PHP','Blade','MySQL'], color:'orange', mark:'CG', href:'https://github.com/naruuu62/cybergear-ipsi', fit:'Backend & frontend fundamentals' },
+  { no:'03', type:'Flutter · On-device ML', title:'DiabeTest', desc:'Aplikasi mobile Flutter dengan model YOLOv8n TFLite yang berjalan di perangkat serta integrasi data produk makanan.', stack:['Flutter','Dart','TFLite','Firebase'], color:'lime', mark:'DT', href:'https://github.com/naruuu62/diabetest', fit:'Mobile development' },
+  { no:'04', type:'Native Android', title:'LocalNgalam', desc:'Aplikasi Android native menggunakan Kotlin dan antarmuka deklaratif modern dengan Jetpack Compose.', stack:['Kotlin','Jetpack Compose'], color:'violet', mark:'LN', href:'https://github.com/naruuu62/LocalNgalam', fit:'Mobile UI engineering' },
 ];
 
-export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [sent, setSent] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+export default function Home(){
+  const [menuOpen,setMenuOpen]=useState(false); const [sent,setSent]=useState(false); const [scrolled,setScrolled]=useState(false);
+  useEffect(()=>{const onScroll=()=>setScrolled(window.scrollY>24);onScroll();window.addEventListener('scroll',onScroll);return()=>window.removeEventListener('scroll',onScroll)},[]);
+  const goTo=(id:string)=>{setMenuOpen(false);document.getElementById(id)?.scrollIntoView({behavior:'smooth'})};
+  const submit=(event:FormEvent<HTMLFormElement>)=>{event.preventDefault();const data=new FormData(event.currentTarget);const subject=encodeURIComponent(`Portfolio inquiry dari ${data.get('name')}`);const body=encodeURIComponent(`${data.get('message')}\n\nDari: ${data.get('name')} (${data.get('email')})`);window.location.href=`mailto:nurilarifin270@gmail.com?subject=${subject}&body=${body}`;setSent(true)};
+  return <main>
+    <header className={`nav ${scrolled?'nav--scrolled':''}`}><button className="brand" onClick={()=>goTo('home')} aria-label="Ke halaman awal"><span>SNA.</span></button><nav className={menuOpen?'nav-links nav-links--open':'nav-links'} aria-label="Navigasi utama">{['about','skills','projects'].map(item=><button key={item} onClick={()=>goTo(item)}>{item}</button>)}<button className="nav-contact" onClick={()=>goTo('contact')}>Let&apos;s talk <span>↗</span></button></nav><button className="menu" onClick={()=>setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Buka menu"><span/><span/></button></header>
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    <section className="hero" id="home"><div className="hero-copy reveal"><p className="eyebrow"><i/> Available for developer internship</p><h1>Mobile developer<br/>yang juga <em>paham</em><br/><span>backend.</span></h1><p className="hero-desc">Saya Septian Nuril Arifin—mahasiswa Teknologi Informasi Universitas Brawijaya yang membangun aplikasi dengan Flutter, Kotlin, Laravel, REST API, dan MySQL.</p><div className="hero-actions"><button className="btn btn-primary" onClick={()=>goTo('projects')}>Lihat technical work <span>↓</span></button><a className="text-link" href="https://github.com/naruuu62" target="_blank" rel="noreferrer">GitHub saya <span>↗</span></a></div></div><div className="portrait-wrap reveal delay"><div className="scribble">based in<br/><b>Malang, ID</b></div><div className="portrait"><img src="https://github.com/naruuu62.png?size=800" alt="Septian Nuril Arifin"/><span>SEPTIAN<br/>NURIL ARIFIN</span></div><span className="sticker">OPEN TO<br/><b>INTERN</b></span></div><div className="scroll-note">SCROLL TO EXPLORE <span>↓</span></div></section>
 
-  const goTo = (id: string) => {
-    setMenuOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
+    <section className="about section" id="about"><div className="section-tag">01 / ENGINEERING PROFILE</div><div className="about-grid"><h2>Membangun dari UI sampai <em>data layer.</em></h2><div className="about-copy"><p>Saya berfokus pada mobile development dan terbiasa menerjemahkan high-fidelity design menjadi aplikasi Flutter atau Android yang stabil dan mudah digunakan.</p><p>Untuk backend, saya memahami pola MVC Laravel, REST API, routing, controller, middleware, autentikasi, migration, seeder, dan relasi MySQL. Di RAION Community saya juga mengerjakan fitur, integrasi backend, serta debugging.</p><a href="mailto:nurilarifin270@gmail.com">Diskusikan kebutuhan tim <span>→</span></a></div></div><div className="stats"><div><b>3.89</b><span>GPA dari<br/>skala 4.00</span></div><div><b>41</b><span>Public repositories<br/>di GitHub</span></div><div><b>3×</b><span>Pemenang & finalis<br/>kompetisi teknologi</span></div></div></section>
 
-  const submit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSent(true);
-    event.currentTarget.reset();
-    window.setTimeout(() => setSent(false), 4000);
-  };
+    <section className="skills section" id="skills"><div className="section-tag light">02 / TECHNICAL CAPABILITIES</div><div className="skills-head"><h2>Hard skills yang<br/><em>siap dipakai.</em></h2><p>Stack utama saya menghubungkan mobile UI, business logic, API, autentikasi, dan penyimpanan data.</p></div><div className="skill-list"><article><span>01</span><h3>Mobile Engineering</h3><p>Flutter, Dart, Kotlin, Jetpack Compose, React Native fundamentals</p><i>↗</i></article><article><span>02</span><h3>Backend & API</h3><p>Laravel, PHP, REST API, MVC, Auth, Routing, Controller</p><i>↗</i></article><article><span>03</span><h3>Data & Cloud</h3><p>MySQL, Firebase, Supabase, Database Relationships</p><i>↗</i></article><article><span>04</span><h3>Engineering Workflow</h3><p>Git, GitHub, Postman, Android Studio, VS Code, Figma</p><i>↗</i></article></div></section>
 
-  return (
-    <main>
-      <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
-        <button className="brand" onClick={() => goTo('home')} aria-label="Ke halaman awal"><span>SNA.</span></button>
-        <nav className={menuOpen ? 'nav-links nav-links--open' : 'nav-links'} aria-label="Navigasi utama">
-          {['about', 'skills', 'projects'].map((item) => <button key={item} onClick={() => goTo(item)}>{item}</button>)}
-          <button className="nav-contact" onClick={() => goTo('contact')}>Let&apos;s talk <span>↗</span></button>
-        </nav>
-        <button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Buka menu"><span /><span /></button>
-      </header>
+    <section className="projects section" id="projects"><div className="section-tag">03 / RELEVANT PROJECTS</div><div className="project-heading"><h2>Proyek yang relevan<br/>untuk <em>internship.</em></h2><p>Dipilih dari GitHub berdasarkan kebutuhan Laravel, mobile development, REST API, MySQL, dan fundamental frontend–backend.</p></div><div className="project-list">{projects.map(project=><article className="project-card" key={project.title}><div className={`project-visual ${project.color}`}><span className="project-no">{project.no}</span><div className="mock-window"><div className="mock-bar"><i/><i/><i/></div><b>{project.mark}</b><div className="mock-lines"><i/><i/><i/></div></div></div><div className="project-info"><span>{project.type}</span><h3>{project.title}</h3><p>{project.desc}</p><strong className="fit-label">✓ {project.fit}</strong><div className="chips">{project.stack.map(item=><i key={item}>{item}</i>)}</div><a className="project-link" href={project.href} target="_blank" rel="noreferrer">Lihat repository <span>↗</span></a></div></article>)}</div></section>
 
-      <section className="hero" id="home">
-        <div className="hero-copy reveal">
-          <p className="eyebrow"><i /> Halo, saya Septian</p>
-          <h1>Membuat hal digital<br />yang <em>berguna</em> dan<br /><span>enak dipakai.</span></h1>
-          <p className="hero-desc">Mahasiswa Informatika dan developer yang suka mengubah ide rumit menjadi pengalaman digital yang sederhana.</p>
-          <div className="hero-actions">
-            <button className="btn btn-primary" onClick={() => goTo('projects')}>Lihat karya <span>↓</span></button>
-            <button className="text-link" onClick={() => goTo('contact')}>Hubungi saya <span>↗</span></button>
-          </div>
-        </div>
-        <div className="portrait-wrap reveal delay">
-          <div className="scribble">based in<br /><b>Malang, ID</b></div>
-          <div className="portrait" role="img" aria-label="Placeholder foto profil Angilbert">
-            <div className="portrait-bg" /><div className="portrait-head" /><div className="portrait-body" /><span>FOTO<br />KAMU</span>
-          </div>
-          <span className="sticker">OPEN TO<br /><b>WORK</b></span>
-        </div>
-        <div className="scroll-note">SCROLL TO EXPLORE <span>↓</span></div>
-      </section>
-
-      <section className="about section" id="about">
-        <div className="section-tag">01 / TENTANG SAYA</div>
-        <div className="about-grid">
-          <h2>Saya percaya produk yang baik dimulai dari <em>rasa ingin tahu.</em></h2>
-          <div className="about-copy">
-            <p>Saya seorang mahasiswa Informatika yang menikmati proses membangun produk dari nol mulai dari memahami masalah, merancang alur, sampai menulis kode yang rapi.</p>
-            <p>Di luar layar, saya suka mencari perspektif baru lewat musik, fotografi jalanan, dan obrolan panjang ditemani kopi.</p>
-            <a href="#contact" onClick={(e) => { e.preventDefault(); goTo('contact'); }}>Lebih kenal dengan saya <span>→</span></a>
-          </div>
-        </div>
-        <div className="stats">
-          <div><b>02+</b><span>Tahun belajar &<br />membangun</span></div><div><b>08</b><span>Project selesai<br />dan terus bertambah</span></div><div><b>100%</b><span>Rasa penasaran<br />di setiap project</span></div>
-        </div>
-      </section>
-
-      <section className="skills section" id="skills">
-        <div className="section-tag light">02 / KEMAMPUAN</div>
-        <div className="skills-head"><h2>Yang bisa saya<br /><em>bawa ke meja.</em></h2><p>Saya menggabungkan logika teknis dan kepekaan visual untuk membuat produk yang bekerja dengan baik dan terasa tepat.</p></div>
-        <div className="skill-list">
-          <article><span>01</span><h3>Frontend Development</h3><p>HTML, CSS, JavaScript, React, Next.js</p><i>↗</i></article>
-          <article><span>02</span><h3>Backend Development</h3><p>PHP, Laravel, Node.js, MySQL, REST API</p><i>↗</i></article>
-          <article><span>03</span><h3>UI & Product Design</h3><p>Figma, Wireframing, Prototyping, Design System</p><i>↗</i></article>
-          <article><span>04</span><h3>Tools & Workflow</h3><p>Git, GitHub, Docker, Postman, Linux</p><i>↗</i></article>
-        </div>
-      </section>
-
-      <section className="projects section" id="projects">
-        <div className="section-tag">03 / PROJECT PILIHAN</div>
-        <div className="project-heading"><h2>Beberapa hal yang<br />pernah saya <em>buat.</em></h2><p>Project kuliah, eksperimen, dan kolaborasi yang membantu saya tumbuh sebagai developer.</p></div>
-        <div className="project-list">
-          {projects.map((project) => (
-            <article className="project-card" key={project.title}>
-              <div className={`project-visual ${project.color}`}><span className="project-no">{project.no}</span><div className="mock-window"><div className="mock-bar"><i /><i /><i /></div><b>{project.mark}</b><div className="mock-lines"><i /><i /><i /></div></div></div>
-              <div className="project-info"><span>{project.type}</span><h3>{project.title}</h3><p>{project.desc}</p><div className="chips">{project.stack.map((item) => <i key={item}>{item}</i>)}</div><button aria-label={`Lihat project ${project.title}`}>Lihat project <span>↗</span></button></div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="contact section" id="contact">
-        <div className="contact-intro"><div className="section-tag light">04 / KONTAK</div><h2>Punya ide?<br /><em>Mari kita<br />bicarakan.</em></h2><p>Saya selalu terbuka untuk project baru, kesempatan kolaborasi, atau sekadar bertukar cerita.</p><a href="mailto:halo@angilbert.dev">halo@septian.dev <span>↗</span></a></div>
-        <form onSubmit={submit}><label>Nama<input name="name" placeholder="Nama kamu" required /></label><label>Email<input name="email" type="email" placeholder="email@kamu.com" required /></label><label>Ceritakan idemu<textarea name="message" placeholder="Sedikit tentang project atau hal yang ingin kamu obrolkan..." required /></label><button className="btn btn-send" type="submit">Kirim pesan <span>↗</span></button><p className={`form-note ${sent ? 'visible' : ''}`} role="status">Pesan tersimpan—terima kasih! Saya akan segera menghubungi kamu.</p></form>
-      </section>
-
-      <footer><button className="brand footer-brand" onClick={() => goTo('home')}>SNA.</button><p>Dirancang & dibangun dengan niat baik.<br />© 2026 Septian Nuril A.</p><div><a href="#">LinkedIn ↗</a><a href="#">GitHub ↗</a><a href="#">Instagram ↗</a></div></footer>
-    </main>
-  );
+    <section className="contact section" id="contact"><div className="contact-intro"><div className="section-tag light">04 / CONTACT</div><h2>Butuh developer<br/><em>yang mau<br/>bertumbuh?</em></h2><p>Saya terbuka untuk kesempatan Developer Intern, khususnya pada produk web dan mobile.</p><a href="mailto:nurilarifin270@gmail.com">nurilarifin270@gmail.com <span>↗</span></a></div><form onSubmit={submit}><label>Nama<input name="name" placeholder="Nama kamu" required/></label><label>Email<input name="email" type="email" placeholder="email@kamu.com" required/></label><label>Pesan<textarea name="message" placeholder="Ceritakan kesempatan atau project yang ingin didiskusikan..." required/></label><button className="btn btn-send" type="submit">Kirim lewat email <span>↗</span></button><p className={`form-note ${sent?'visible':''}`} role="status">Aplikasi email dibuka—silakan cek dan kirim pesannya.</p></form></section>
+    <footer><button className="brand footer-brand" onClick={()=>goTo('home')}>SNA.</button><p>Built with attention to detail.<br/>© 2026 Septian Nuril Arifin.</p><div><a href="https://www.linkedin.com/in/septian-nuril-arifin/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/naruuu62" target="_blank" rel="noreferrer">GitHub ↗</a><a href="tel:+6287860521201">Phone ↗</a></div></footer>
+  </main>
 }

@@ -7,8 +7,8 @@ const serif = Newsreader({ variable: '--font-serif', subsets: ['latin'], style: 
 const mono = DM_Mono({ variable: '--font-mono', subsets: ['latin'], weight: ['300', '400', '500'] });
 
 export const metadata: Metadata = {
-  title: 'Contoh Website Portofolio',
-  description: 'Portfolio Septian, mahasiswa Informatika dan developer yang membuat pengalaman digital sederhana dan berguna.',
+  title: 'Septian Nuril Arifin — Mobile & Backend Developer',
+  description: 'Technical portfolio Septian Nuril Arifin: Flutter, Kotlin, Laravel, REST API, dan MySQL.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
