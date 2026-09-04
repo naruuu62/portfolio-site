@@ -7,7 +7,7 @@ const serif = Newsreader({ variable: '--font-serif', subsets: ['latin'], style: 
 const mono = DM_Mono({ variable: '--font-mono', subsets: ['latin'], weight: ['300', '400', '500'] });
 
 export const metadata: Metadata = {
-  title: 'Septian Nuril Arifin — Mobile & Backend Developer',
+  title: 'Septian Nuril Arifin  Mobile & Backend Developer',
   description: 'Technical portfolio Septian Nuril Arifin: Flutter, Kotlin, Laravel, REST API, dan MySQL.',
 };
 
