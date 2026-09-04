@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "vinext dev",
-    "build": "NITRO_PRESET=cloudflare_module vite build && mkdir -p dist && cp -R .output/. dist/ && cp dist/server/index.mjs dist/server/index.js",
+    "build": "NITRO_PRESET=vercel vite build",
     "build:node": "NITRO_PRESET=node vite build",
     "start": "node .output/server/index.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
